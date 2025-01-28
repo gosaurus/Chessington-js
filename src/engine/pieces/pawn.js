@@ -12,7 +12,10 @@ export default class Pawn extends Piece {
         const availableMoves = [];
 
         if (this.player === Player.WHITE) {
-  
+            if (location.row === 7) {
+                return availableMoves;
+            }
+
             if(location.row === 1) {
 
                 if(!board.isSquareOccupied(Square.at(location.row + 1, location.col))) 
@@ -21,13 +24,22 @@ export default class Pawn extends Piece {
                 if(!board.isSquareOccupied(Square.at(location.row + 1, location.col)) && !board.isSquareOccupied(Square.at(location.row + 2, location.col)))  
                     availableMoves.push(Square.at(location.row + 2, location.col)); 
                 
-            } else {
-
-                if(!board.isSquareOccupied(Square.at(location.row + 1, location.col))) 
+            } else if (!board.isSquareOccupied(Square.at(location.row + 1, location.col))) {
                     availableMoves.push(Square.at(location.row + 1, location.col));
             }
-            
-        }  else if (this.player === Player.BLACK) {
+
+            if (board.isSquareOccupied(Square.at(location.row + 1, location.col + 1))) 
+                availableMoves.push(Square.at(location.row + 1, location.col + 1));
+
+            if (board.isSquareOccupied(Square.at(location.row + 1, location.col - 1))) 
+                availableMoves.push(Square.at(location.row + 1, location.col - 1));
+        
+        }          
+        else if(this.player === Player.BLACK) {
+            if (location.row === 0) {
+                return availableMoves;
+            }
+
             if(location.row === 6) {
 
                 if(!board.isSquareOccupied(Square.at(location.row - 1, location.col)))
@@ -35,10 +47,9 @@ export default class Pawn extends Piece {
 
                 if(!board.isSquareOccupied(Square.at(location.row - 1, location.col)) && !board.isSquareOccupied(Square.at(location.row - 2, location.col)))
                     availableMoves.push(Square.at(location.row - 2, location.col));
-            } else {
-                if(!board.isSquareOccupied(Square.at(location.row - 1, location.col)))
+            } else if (!board.isSquareOccupied(Square.at(location.row - 1, location.col)))
                     availableMoves.push(Square.at(location.row - 1, location.col));
-            }
+            
             
         }
         return availableMoves;
