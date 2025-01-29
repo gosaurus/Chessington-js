@@ -22,6 +22,8 @@ export default class Rook extends Piece {
     getAvailableMoves(board) {
 
         let location = board.findPiece(this);
+        const availableMoves = listAvailableMoves();
+        
         // Horizontally to the left
         for(let position = location.col ; position >= 0 ; position--) {
             if(position !== location.col)
