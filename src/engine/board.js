@@ -24,6 +24,14 @@ export default class Board {
         return this.board[square.row][square.col];
     }
 
+    getPieceColor(square) {
+        return this.board[square.row][square.col].player;
+    }
+
+    getPieceName(square) {
+        return this.board[square.row][square.col].player;
+    }
+
     isSquareOccupied(square) {
         return typeof(this.board[square.row][square.col]) === "undefined" ? false : true;
     }
