@@ -1,5 +1,6 @@
 import Piece from './piece';
 import Square from '../square';
+import King from './king';
 
 
 export default class Bishop extends Piece {
@@ -11,7 +12,7 @@ export default class Bishop extends Piece {
         if(!board.isSquareOccupied(square)) {
             this.availableMoves.push(square);
             return true
-        } else if (board.getPieceColor(square) !== this.player) {
+        } else if (board.getPieceColor(square) !== this.player && !(board.getPiece(square) instanceof King)) {
             this.availableMoves.push(square);
             return false;
         }
@@ -20,6 +21,7 @@ export default class Bishop extends Piece {
     getAvailableMoves(board) {
 
         let location = board.findPiece(this);
+        this.availableMoves = [];
 
         // diagonally to the left top corner
         for(let r = location.row + 1, c = location.col - 1 ; r <=7 && c >=0 ; r++, c--) {
