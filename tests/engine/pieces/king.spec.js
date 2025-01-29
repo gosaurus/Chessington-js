@@ -1,4 +1,7 @@
 import King from '../../../src/engine/pieces/king';
+import Board from '../../../src/engine/board.js';
+import Player from '../../../src/engine/player.js'
+import Square from '../../../src/engine/square.js'
 
 describe('King', () => {
 

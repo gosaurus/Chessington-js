@@ -1,4 +1,5 @@
 import Piece from './piece';
+import Board from '../board.js';
 
 export default class Knight extends Piece {
     constructor(player) {
