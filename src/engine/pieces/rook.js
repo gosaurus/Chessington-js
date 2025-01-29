@@ -1,6 +1,7 @@
 import Piece from './piece';
 import Square from '../square';
 import Player from '../player';
+import King from './king';
 
 
 export default class Rook extends Piece {
@@ -13,7 +14,7 @@ export default class Rook extends Piece {
         if(!board.isSquareOccupied(square)) {
             this.availableMoves.push(square);
             return true
-        } else if (board.getPieceColor(square) !== this.player) {
+        } else if (board.getPieceColor(square) !== this.player && !(board.getPiece(square) instanceof King)) {
             this.availableMoves.push(square);
             return false;
         }
