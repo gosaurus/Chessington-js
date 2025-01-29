@@ -9,7 +9,6 @@ export default class Rook extends Piece {
         super(player);
     }
 
-    // 
     addToMovesIfAvailable(board,square) {
         if(!board.isSquareOccupied(square)) {
             this.availableMoves.push(square);
@@ -27,40 +26,28 @@ export default class Rook extends Piece {
         for(let position = location.col ; position >= 0 ; position--) {
             if(position !== location.col)
                 if (!this.addToMovesIfAvailable(board, Square.at(location.row, position)))                    
-                    break;//check if occupied
+                    break;
         }
 
         // Horizontally to the right
         for(let position = location.col ; position <= 7 ; position++) {
             if(position !== location.col)
                 if (!this.addToMovesIfAvailable(board, Square.at(location.row, position)))                    
-                    break;//check if occupied
-                // if (board.isSquareOccupied(Square.at(location.row, position))) 
-                //     break;//check if occupied
-                // else
-                //     this.addToMovesIfAvailable(board, Square.at(location.row, position));
+                    break;
         }
         
         // Vertically to the top
         for(let position = location.row ; position <= 7 ; position++) {
             if(position !== location.row)
             if (!this.addToMovesIfAvailable(board, Square.at(position, location.col)))                    
-                break;//check if occupied
-                // if (board.isSquareOccupied(Square.at(position, location.col))) 
-                //     break;//check if occupied
-                // else
-                //     this.addToMovesIfAvailable(board, Square.at(position, location.col));
+                break;
         }
 
         // Vertically to the bottom
         for(let position = location.row ; position >= 0 ; position--) {
             if(position !== location.row)
                 if (!this.addToMovesIfAvailable(board, Square.at(position, location.col)))                    
-                    break;//check if occupied
-                // if (board.isSquareOccupied(Square.at(position, location.col))) 
-                //     break;//check if occupied
-                // else
-                //     this.addToMovesIfAvailable(board, Square.at(position, location.col));
+                    break;
         }
         return this.availableMoves;
     }
